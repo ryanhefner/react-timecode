@@ -878,9 +878,9 @@ ci-info@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.0.0.tgz#dc5285f2b4e251821683681c381c3388f46ec534"
 
-clean-react-props@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/clean-react-props/-/clean-react-props-0.1.0.tgz#efe7fae99431d997152211e49146dc95a972cd11"
+clean-react-props@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/clean-react-props/-/clean-react-props-0.1.1.tgz#c71a5ed6d241ba4086275b5bbca7e0ece2d290bc"
 
 cliui@^2.1.0:
   version "2.1.0"
