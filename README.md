@@ -5,12 +5,14 @@ Simple React component for displaying a timecode, with various formatting option
 ## Install
 
 Via [npm](https://npmjs.com/package/react-timecode)
-```
+
+```sh
 npm install --save react-timecode
 ```
 
 Via [Yarn](https://yarn.fyi/react-timecode)
-```
+
+```sh
 yarn add react-timecode
 ```
 
@@ -37,7 +39,7 @@ simple example.
 
 ### Example
 
-```
+```js
 import Timecode from 'react-timecode';
 
 ...
