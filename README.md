@@ -64,4 +64,4 @@ import Timecode from 'react-timecode';
 
 ## License
 
-[MIT](LICENSE})
+[MIT](LICENSE) © [Ryan Hefner](https://www.ryanhefner.com)
