@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cleanProps from 'clean-react-props';
 
@@ -7,6 +7,26 @@ const MINUTE = 60 * 1000;
 const HOUR = 60 * 60 * 1000;
 
 class Timecode extends Component {
+  pad(number, length = 2) {
+    const numberLength = number.toString().length;
+    if (numberLength < length) {
+      const diff = length - numberLength;
+      let padding = '';
+
+      while (padding.length < diff) {
+        padding += '0';
+      }
+
+      return `${padding}${number}`;
+    }
+
+    return number;
+  }
+
+  formatMilliseconds(milliseconds) {
+    return this.pad((milliseconds / 1000).toFixed(3) * 1000, 3);
+  }
+
   formatTimecode({hours, minutes, seconds, milliseconds}) {
     const {
       format,
@@ -14,60 +34,60 @@ class Timecode extends Component {
 
     switch (format) {
       case 'HH:mm:ss.sss':
-        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+        return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
       case 'H:mm:ss.sss':
-        return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+        return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
       case 'H:?mm:ss.sss':
         if (hours) {
-          return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+          return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
         }
 
-        return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+        return `${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
       case 'H:?m:ss.sss':
         if (hours) {
-          return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+          return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
         }
 
-        return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}.${(milliseconds / 1000).toFixed(3) * 1000}`;
+        return `${minutes}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
       case 'HH:mm:ss':
-        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}`;
 
       case 'H:mm:ss':
-        return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
 
       case 'H:?mm:ss':
         if (hours) {
-          return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+          return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
         }
 
-        return `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return `${this.pad(minutes)}:${this.pad(seconds)}`;
 
       case 'H:mm':
-        return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+        return `${hours}:${this.pad(minutes)}`;
 
       case 'H:?m:ss':
       default:
         if (hours) {
-          return `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+          return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
         }
 
-        return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return `${minutes}:${this.pad(seconds)}`;
     }
   }
 
   render() {
     const {
-      element,
+      component,
       time,
     } = this.props;
 
     let milliseconds = time;
 
-    const hours = milliseconds > HOUR
+    const hours = milliseconds >= HOUR
       ? Math.floor(milliseconds / HOUR)
       : 0;
 
@@ -75,7 +95,7 @@ class Timecode extends Component {
       milliseconds -= hours * HOUR;
     }
 
-    const minutes = milliseconds > MINUTE
+    const minutes = milliseconds >= MINUTE
       ? Math.floor(milliseconds / MINUTE)
       : 0;
 
@@ -83,7 +103,7 @@ class Timecode extends Component {
       milliseconds -= minutes * MINUTE;
     }
 
-    const seconds = milliseconds > SECOND
+    const seconds = milliseconds >= SECOND
       ? Math.floor(milliseconds / SECOND)
       : 0;
 
@@ -91,24 +111,24 @@ class Timecode extends Component {
       milliseconds -= seconds * SECOND;
     }
 
-    const ElementTag = `${element}`;
+    const CustomComponent = `${component}`;
 
     return (
-      <ElementTag {...cleanProps(this.props)}>
+      <CustomComponent {...cleanProps(this.props)}>
         {this.formatTimecode({hours, minutes, seconds, milliseconds})}
-      </ElementTag>
+      </CustomComponent>
     );
   }
 }
 
 Timecode.propTypes = {
-  element: PropTypes.string,
+  component: PropTypes.string,
   format: PropTypes.string,
   time: PropTypes.number,
 };
 
 Timecode.defaultProps = {
-  element: 'span',
+  component: 'span',
   format: 'H:?m:ss',
   time: 0,
 };
