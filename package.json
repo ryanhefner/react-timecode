@@ -37,7 +37,7 @@
     "react": ">=15"
   },
   "dependencies": {
-    "clean-react-props": "^0.2.3",
+    "clean-react-props": "^0.2.4",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "coveralls": "^3.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "greenkeeper-lockfile": "^1.15.0",
+    "greenkeeper-lockfile": "^1.15.1",
     "gzip-size": "^4.1.0",
     "jest": "^22.4.4",
     "jest-enzyme": "^6.0.0",
