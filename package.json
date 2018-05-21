@@ -1,6 +1,6 @@
 {
   "name": "react-timecode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Simple React component for displaying a timecode, with various format options.",
   "repository": "ryanhefner/react-timecode",
