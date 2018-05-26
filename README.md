@@ -41,6 +41,8 @@ simple example.
   * `H:?mm:ss` - (Example: 01:23)
   * `H:mm` - (Example: 0:01)
   * `H:?m:ss` - (Example: 1:23 - _Default_)
+* `postfix:String` - Append a string after the formatted timecode.
+* `prefix:String` - Include a string before the formatted timecode.
 * `time:Number` - Time in milliseconds to display the timecode for. (Default: `0`)
 
 ### Example

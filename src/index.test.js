@@ -192,4 +192,21 @@ describe('<Timecode />', () => {
     expect(component.html()).toBe('<span>1:30:30</span>');
     component.unmount();
   });
+
+  test('render prefix', () => {
+    component = mount(<Timecode prefix="-" />, {
+      attachTo: document.getElementById('root'),
+    });
+
+    expect(component.html()).toBe('<span>-0:00</span>');
+    component.unmount();
+  });
+
+  test('render postfix', () => {
+    component = mount(<Timecode postfix="/left" />, {
+      attachTo: document.getElementById('root'),
+    });
+
+    expect(component.html()).toBe('<span>0:00/left</span>');
+  });
 });

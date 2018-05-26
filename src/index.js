@@ -82,6 +82,8 @@ class Timecode extends Component {
   render() {
     const {
       component,
+      prefix,
+      postfix,
       time,
     } = this.props;
 
@@ -114,8 +116,8 @@ class Timecode extends Component {
     const CustomComponent = `${component}`;
 
     return (
-      <CustomComponent {...cleanProps(this.props)}>
-        {this.formatTimecode({hours, minutes, seconds, milliseconds})}
+      <CustomComponent {...cleanProps(this.props, ['prefix', 'postfix'])}>
+        {`${prefix}${this.formatTimecode({hours, minutes, seconds, milliseconds})}${postfix}`}
       </CustomComponent>
     );
   }
@@ -124,12 +126,16 @@ class Timecode extends Component {
 Timecode.propTypes = {
   component: PropTypes.string,
   format: PropTypes.string,
+  prefix: PropTypes.string,
+  postfix: PropTypes.string,
   time: PropTypes.number,
 };
 
 Timecode.defaultProps = {
   component: 'span',
   format: 'H:?m:ss',
+  prefix: '',
+  postfix: '',
   time: 0,
 };
 
