@@ -9,6 +9,7 @@
     "react",
     "react-component",
     "timecode",
+    "react-timecode",
     "react-timer-wrapper"
   ],
   "files": [
