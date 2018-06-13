@@ -113,18 +113,21 @@ class Timecode extends Component {
       milliseconds -= seconds * SECOND;
     }
 
-    const CustomComponent = `${component}`;
-
-    return (
-      <CustomComponent {...cleanProps(this.props, ['prefix', 'postfix'])}>
-        {`${prefix}${this.formatTimecode({hours, minutes, seconds, milliseconds})}${postfix}`}
-      </CustomComponent>
+    return React.createElement(
+      component,
+      {...cleanProps(this.props, ['prefix', 'postfix'])},
+      [
+        `${prefix}${this.formatTimecode({hours, minutes, seconds, milliseconds})}${postfix}`,
+      ],
     );
   }
 }
 
 Timecode.propTypes = {
-  component: PropTypes.string,
+  component: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+  ]),
   format: PropTypes.string,
   prefix: PropTypes.string,
   postfix: PropTypes.string,
