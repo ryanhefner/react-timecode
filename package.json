@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "clean-react-props": "^0.2.9",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
