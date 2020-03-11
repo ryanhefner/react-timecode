@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/l/express.svg)](LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/ryanhefner/react-timecode/badge.svg?branch=master)](https://coveralls.io/github/ryanhefner/react-timecode?branch=master)
 [![CircleCI](https://circleci.com/gh/ryanhefner/react-timecode.svg?style=shield)](https://circleci.com/gh/ryanhefner/react-timecode)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ryanhefner/react-timecode.svg)](https://greenkeeper.io/)
+
 
 Simple React component for displaying a timecode, with various formatting options.
 
