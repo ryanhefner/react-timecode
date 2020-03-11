@@ -1,9 +1,11 @@
 # ⏳ react-timecode
 
-[![npm version](https://badge.fury.io/js/react-timecode.svg)](https://badge.fury.io/js/clean-react-props)
-[![npm](https://img.shields.io/npm/l/express.svg)](LICENSE)
-[![Coverage Status](https://coveralls.io/repos/github/ryanhefner/react-timecode/badge.svg?branch=master)](https://coveralls.io/github/ryanhefner/react-timecode?branch=master)
-[![CircleCI](https://circleci.com/gh/ryanhefner/react-timecode.svg?style=shield)](https://circleci.com/gh/ryanhefner/react-timecode)
+![npm](https://img.shields.io/npm/v/react-timecode?style=flat-square)
+![NPM](https://img.shields.io/npm/l/react-timecode?style=flat-square)
+![npm](https://img.shields.io/npm/dt/react-timecode?style=flat-square)
+![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-timecode?style=flat-square)
+![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-timecode?style=flat-square)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/ryanhefner/react-timecode?style=flat-square)
 
 
 Simple React component for displaying a timecode, with various formatting options.
