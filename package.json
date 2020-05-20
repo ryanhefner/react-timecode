@@ -5,6 +5,10 @@
   "description": "Simple React component for displaying a timecode, with various format options.",
   "repository": "ryanhefner/react-timecode",
   "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/ryanhefner"
+  },
   "keywords": [
     "react",
     "react-component",
