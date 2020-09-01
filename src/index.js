@@ -23,8 +23,8 @@ class Timecode extends Component {
     return number;
   }
 
-  formatMilliseconds(milliseconds) {
-    return this.pad((milliseconds / 1000).toFixed(3) * 1000, 3);
+  formatMilliseconds(milliseconds, length = 3) {
+    return this.pad((milliseconds / 1000).toFixed(length) * 1000, length);
   }
 
   formatTimecode({hours, minutes, seconds, milliseconds}) {
@@ -33,20 +33,20 @@ class Timecode extends Component {
     } = this.props;
 
     switch (format) {
-      case 'HH:mm:ss.sss':
+      case 'HH:mm:ss.SSS':
         return `${this.pad(hours)}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
-      case 'H:mm:ss.sss':
+      case 'H:mm:ss.SSS':
         return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
-      case 'H:?mm:ss.sss':
+      case 'H:?mm:ss.SSS':
         if (hours) {
           return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
         }
 
         return `${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
 
-      case 'H:?m:ss.sss':
+      case 'H:?m:ss.SSS':
         if (hours) {
           return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}.${this.formatMilliseconds(milliseconds)}`;
         }
@@ -68,6 +68,12 @@ class Timecode extends Component {
 
       case 'H:mm':
         return `${hours}:${this.pad(minutes)}`;
+
+      case 's.SSS':
+        return `${seconds}.${this.formatMilliseconds(milliseconds)}`;
+
+      case 's.SS':
+        return `${seconds}.${this.formatMilliseconds(milliseconds, 2)}`;
 
       case 'H:?m:ss':
       default:
