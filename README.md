@@ -34,14 +34,16 @@ simple example.
 
 * `component:String|Function` - Element to render the timecode within. (Default: `span`)
 * `format:String` - Specifies the format to display the timecode. (Default: `H:?m:ss`)
-  * `HH:mm:ss.sss` - (Example: 00:01:23.876)
-  * `H:mm:ss.sss` - (Example: 0:01:23.876)
-  * `H:?mm:ss.sss` - (Example: 01:23.876)
-  * `H:?m:ss.sss` - (Example: 1:23.876)
+  * `HH:mm:ss.SSS` - (Example: 00:01:23.876)
+  * `H:mm:ss.SSS` - (Example: 0:01:23.876)
+  * `H:?mm:ss.SSS` - (Example: 01:23.876)
+  * `H:?m:ss.SSS` - (Example: 1:23.876)
   * `HH:mm:ss` - (Example: 00:01:23)
   * `H:mm:ss` - (Example: 0:01:23)
   * `H:?mm:ss` - (Example: 01:23)
   * `H:mm` - (Example: 0:01)
+  * `s.SSS` - (Example: 0.000)
+  * `s.SS` - (Example: 0.00)
   * `H:?m:ss` - (Example: 1:23 - _Default_)
 * `postfix:String` - Append a string after the formatted timecode.
 * `prefix:String` - Include a string before the formatted timecode.
