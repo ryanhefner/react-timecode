@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Timecode from './index';
 
@@ -52,8 +52,8 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format - HH:mm:ss.sss', () => {
-    component = mount(<Timecode format="HH:mm:ss.sss" />, {
+  test('render format - HH:mm:ss.SSS', () => {
+    component = mount(<Timecode format="HH:mm:ss.SSS" />, {
       attachTo: document.getElementById('root'),
     });
 
@@ -61,8 +61,8 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format - H:mm:ss.sss', () => {
-    component = mount(<Timecode format="H:mm:ss.sss" />, {
+  test('render format - H:mm:ss.SSS', () => {
+    component = mount(<Timecode format="H:mm:ss.SSS" />, {
       attachTo: document.getElementById('root'),
     });
 
@@ -70,8 +70,8 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format - H:?mm:ss.sss', () => {
-    component = mount(<Timecode format="H:?mm:ss.sss" />, {
+  test('render format - H:?mm:ss.SSS', () => {
+    component = mount(<Timecode format="H:?mm:ss.SSS" />, {
       attachTo: document.getElementById('root'),
     });
 
@@ -79,8 +79,8 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format - H:?m:ss.sss', () => {
-    component = mount(<Timecode format="H:?m:ss.sss" />, {
+  test('render format - H:?m:ss.SSS', () => {
+    component = mount(<Timecode format="H:?m:ss.SSS" />, {
       attachTo: document.getElementById('root'),
     });
 
@@ -124,6 +124,24 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
+  test('render format - s.SSS', () => {
+    component = mount(<Timecode format="s.SSS" />, {
+      attachTo: document.getElementById('root'),
+    });
+
+    expect(component.html()).toBe('<span>0.000</span>');
+    component.unmount();
+  });
+
+  test('render format - s.SS', () => {
+    component = mount(<Timecode format="s.SS" />, {
+      attachTo: document.getElementById('root'),
+    });
+
+    expect(component.html()).toBe('<span>0.00</span>');
+    component.unmount();
+  });
+
   test('render format w/ time - H:?m:ss (default)', () => {
     component = mount(<Timecode time={3600000} />, {
       attachTo: document.getElementById('root'),
@@ -133,10 +151,10 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format w/ time - H:?mm:ss.sss', () => {
+  test('render format w/ time - H:?mm:ss.SSS', () => {
     component = mount((
       <Timecode
-        format="H:?mm:ss.sss"
+        format="H:?mm:ss.SSS"
         time={3600000}
       />
     ), {
@@ -147,10 +165,10 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
-  test('render format w/ time - H:?m:ss.sss', () => {
+  test('render format w/ time - H:?m:ss.SSS', () => {
     component = mount((
       <Timecode
-        format="H:?m:ss.sss"
+        format="H:?m:ss.SSS"
         time={3600000}
       />
     ), {
