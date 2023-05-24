@@ -36,7 +36,8 @@
     "prepare": "npm run build",
     "prepublishOnly": "node ./tools/build.js",
     "push-release": "git push origin master && git push --tags",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --coverage"
   },
   "peerDependencies": {
     "react": ">=15"
