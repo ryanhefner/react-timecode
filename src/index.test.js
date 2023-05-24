@@ -52,6 +52,15 @@ describe('<Timecode />', () => {
     component.unmount();
   });
 
+  test('render format - H:?mm:ss', () => {
+    component = mount(<Timecode format="H:?mm:ss" />, {
+      attachTo: document.getElementById('root'),
+    });
+
+    expect(component.html()).toBe('<span>00:00</span>');
+    component.unmount();
+  });
+
   test('render format - HH:mm:ss.SSS', () => {
     component = mount(<Timecode format="HH:mm:ss.SSS" />, {
       attachTo: document.getElementById('root'),
