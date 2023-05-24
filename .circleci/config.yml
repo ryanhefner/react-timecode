@@ -1,21 +1,15 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
+version: 2.1
+
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  node: circleci/node@4.7
+
 jobs:
-  build:
+  build-test-package:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:10.18.0
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+      - image: cimg/node:18.0.0
     steps:
       - checkout
 
@@ -26,20 +20,28 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm i
+      - run: npm ci
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: ./node_modules/.bin/greenkeeper-lockfile-update
       - run: npm run build
 
       # run tests!
-      - run: npm run test
+      - run: npm run test:ci
 
       # send code coverage info to coveralls
       - run: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
-      - run: ./node_modules/.bin/greenkeeper-lockfile-upload
+      # send code coverage info to codecov
+      - run: bash <(curl -s https://codecov.io/bash)
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  test-package: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build-test-package
