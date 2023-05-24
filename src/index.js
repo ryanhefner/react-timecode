@@ -75,6 +75,13 @@ class Timecode extends Component {
       case 's.SS':
         return `${seconds}.${this.formatMilliseconds(milliseconds, 2)}`;
 
+      case 'H:?mm:ss':
+        if (hours) {
+          return `${hours}:${this.pad(minutes)}:${this.pad(seconds)}`;
+        }
+
+        return `${this.pad(minutes)}:${this.pad(seconds)}`;
+
       case 'H:?m:ss':
       default:
         if (hours) {
