@@ -30,10 +30,10 @@
   "jsnext:main": "src/index.js",
   "scripts": {
     "clean": "rm -f index.js && rm -rf es && rm -rf umd",
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "build": "node ./tools/build.js",
     "watch": "babel ./src -d . --ignore __tests__,**/*.test.js --watch",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "prepublishOnly": "node ./tools/build.js",
     "push-release": "git push origin master && git push --tags",
     "test": "jest",
