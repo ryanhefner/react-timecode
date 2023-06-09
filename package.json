@@ -2,13 +2,28 @@
   "name": "react-timecode",
   "version": "1.2.0",
   "license": "MIT",
-  "description": "Simple React component for displaying a timecode, with various format options.",
+  "description": "Simple React component for displaying a timecode with various format options.",
   "repository": "ryanhefner/react-timecode",
   "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/ryanhefner"
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ryanhefner/react-marquease/issues"
   },
+  "homepage": "https://github.com/ryanhefner/react-marquease#readme",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/ryanhefner"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ryanhefner"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/ryanhefner"
+    }
+  ],
   "keywords": [
     "react",
     "react-component",
@@ -17,30 +32,37 @@
     "react-timer-wrapper"
   ],
   "files": [
-    "index.js",
     "es",
     "src",
-    "umd"
+    "types",
+    "umd",
+    "utils.js",
+    "index.cjs"
   ],
   "directories": {
     "lib": "/src"
   },
-  "main": "index.js",
+  "main": "index.cjs",
   "module": "es/index.js",
   "jsnext:main": "src/index.js",
+  "types": "types",
   "scripts": {
     "clean": "rm -f index.js && rm -rf es && rm -rf umd",
     "prebuild": "yarn clean",
     "build": "node ./tools/build.js",
-    "watch": "babel ./src -d . --ignore __tests__,**/*.test.js --watch",
+    "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",
     "prepare": "yarn build",
     "prepublishOnly": "node ./tools/build.js",
+    "prettier": "prettier -c",
     "push-release": "git push origin master && git push --tags",
+    "dtslint": "dtslint types",
     "test": "jest",
-    "test:ci": "jest --coverage"
+    "test:ci": "jest --coverage",
+    "types": "tsc"
   },
   "peerDependencies": {
-    "react": ">=16.8"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "dependencies": {
     "clean-react-props": "^0.4.0",
