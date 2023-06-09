@@ -40,7 +40,7 @@
     "test:ci": "jest --coverage"
   },
   "peerDependencies": {
-    "react": ">=15"
+    "react": ">=16.8"
   },
   "dependencies": {
     "clean-react-props": "^0.4.0",
