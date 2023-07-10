@@ -36,8 +36,9 @@
     "src",
     "types",
     "umd",
-    "utils.js",
-    "index.cjs"
+    "index.cjs",
+    "Timecode.cjs",
+    "utils.cjs"
   ],
   "directories": {
     "lib": "/src"
@@ -47,12 +48,12 @@
   "jsnext:main": "src/index.js",
   "types": "types",
   "scripts": {
-    "clean": "rimraf index.js es types umd",
+    "clean": "rimraf index.cjs utils.cjs es types umd",
     "prebuild": "yarn clean",
-    "build": "node ./tools/build.js && yarn types",
+    "build": "node ./tools/build.mjs && yarn types",
     "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",
     "prepare": "yarn build",
-    "prepublishOnly": "node ./tools/build.js",
+    "prepublishOnly": "node ./tools/build.mjs",
     "prettier": "prettier -c",
     "push-release": "git push origin master && git push --tags",
     "dtslint": "dtslint types",
@@ -71,46 +72,41 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
+    "@babel/eslint-parser": "^7.22.7",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-syntax-import-assertions": "^7.22.5",
+    "@babel/plugin-transform-runtime": "^7.22.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^29.6.1",
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
     "coveralls": "^3.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "greenkeeper-lockfile": "^1.15.1",
-    "gzip-size": "^5.1.1",
-    "jest": "^26.0.1",
-    "jest-enzyme": "^7.1.2",
+    "gzip-size": "^7.0.0",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
     "jsdom": "^16.2.2",
-    "pretty-bytes": "^5.3.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
+    "prettier": "^3.0.0",
+    "pretty-bytes": "^6.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "regenerator-runtime": "^0.13.5",
     "rimraf": "^5.0.1",
-    "rollup": "^2.10.5",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
+    "rollup": "^3.26.2",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.test.js"
-    ],
-    "setupFiles": [
-      "<rootDir>/tools/jest-setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js"
-    ],
-    "testURL": "http://localhost"
+    "typescript": "^5.1.6"
   }
 }
