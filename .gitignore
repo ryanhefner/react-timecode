@@ -4,8 +4,10 @@ es
 node_modules
 umd
 /*.js
+/*.cjs
 npm-debug.log
 yarn-error.log
 *.sublime-project
 *.sublime-workspace
 !rollup.config.js
+!jest.config.cjs
