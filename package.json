@@ -36,9 +36,7 @@
     "src",
     "types",
     "umd",
-    "index.cjs",
-    "Timecode.cjs",
-    "utils.cjs"
+    "index.cjs"
   ],
   "directories": {
     "lib": "/src"
@@ -48,7 +46,7 @@
   "jsnext:main": "src/index.js",
   "types": "types",
   "scripts": {
-    "clean": "rimraf index.cjs utils.cjs es umd",
+    "clean": "rimraf index.cjs es umd",
     "prebuild": "yarn clean",
     "build": "node ./tools/build.mjs",
     "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",

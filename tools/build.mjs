@@ -13,13 +13,14 @@ const exec = (command, extraEnv) => {
 
 console.log('Building CommonJS modules ...')
 
-exec('babel src -d . --out-file-extension .cjs --ignore src/__mocks__,__tests__,**/*.test.js', {
+exec(`rollup -c -f cjs -o index.cjs`, {
   BABEL_ENV: 'cjs',
+  NODE_ENV: 'development',
 })
 
 console.log('\nBuilding ES modules ...')
 
-exec('babel src -d es --ignore src/__mocks__,__tests__,**/*.test.js', {
+exec('babel src -d es --ignore src/__mocks__,__snapshots__,__tests__,**/*.test.js', {
   BABEL_ENV: 'es',
 })
 

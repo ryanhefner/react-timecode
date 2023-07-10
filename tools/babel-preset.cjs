@@ -1,6 +1,3 @@
-const BABEL_ENV = process.env.BABEL_ENV
-const building = BABEL_ENV != undefined && BABEL_ENV !== 'cjs'
-
 const plugins = [
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
@@ -23,7 +20,7 @@ module.exports = function () {
       [
         '@babel/preset-env',
         {
-          modules: building ? false : 'commonjs',
+          modules: false,
         },
       ],
       '@babel/preset-react',
