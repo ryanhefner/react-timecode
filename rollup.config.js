@@ -16,7 +16,7 @@ const config = {
       react: 'React',
     },
     banner: `/*! ${pkg.name} !*/`,
-    footer: `/* Copyright ${(new Date()).getFullYear()} - ${pkg.author} */`,
+    footer: `/* Copyright 2018 - ${(new Date()).getFullYear()} - ${pkg.author} */`,
   },
   external: [
     'react',
