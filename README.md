@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/dt/react-timecode?style=flat-square)
 ![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-timecode?style=flat-square)
 ![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-timecode?style=flat-square)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/ryanhefner/react-timecode?style=flat-square)
+[![Known Vulnerabilities](https://snyk.io/test/github/ryanhefner/react-timecode/badge.svg)]
 ![Twitter Follow](https://img.shields.io/twitter/follow/ryanhefner)
 
 
@@ -81,7 +81,7 @@ have some need to render some strings without the context of the component.
 
 * `parseTime(time:Number): { hours: Number, minutes: Number, seconds: Number, milliseconds: Number }`
 * `pad(number: Number, length: Number = 2): String`
-* `formatMilliseconds(milliseconds: Number, length: Number = 3)`
+* `formatMilliseconds(milliseconds: Number, length: Number = 3): String`
 * `formatTimecode({ format: String, time: Number }): String`
 
 ## Pairs well with...
