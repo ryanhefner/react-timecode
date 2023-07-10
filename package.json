@@ -48,9 +48,9 @@
   "jsnext:main": "src/index.js",
   "types": "types",
   "scripts": {
-    "clean": "rimraf index.cjs utils.cjs es types umd",
+    "clean": "rimraf index.cjs utils.cjs es umd",
     "prebuild": "yarn clean",
-    "build": "node ./tools/build.mjs && yarn types",
+    "build": "node ./tools/build.mjs",
     "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",
     "prepare": "yarn build",
     "prepublishOnly": "node ./tools/build.mjs",
@@ -66,8 +66,7 @@
     "react-dom": ">=16.8"
   },
   "dependencies": {
-    "clean-react-props": "^0.4.0",
-    "prop-types": "^15.7.2"
+    "clean-react-props": "^0.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -89,7 +88,6 @@
     "babel-core": "^7.0.0-0",
     "babel-jest": "^29.6.1",
     "babel-plugin-dev-expression": "^0.2.2",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
     "coveralls": "^3.1.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
