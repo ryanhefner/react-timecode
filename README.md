@@ -6,6 +6,7 @@
 ![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-timecode?style=flat-square)
 ![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-timecode?style=flat-square)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/ryanhefner/react-timecode?style=flat-square)
+![Twitter Follow](https://img.shields.io/twitter/follow/ryanhefner)
 
 
 Simple React component for displaying a timecode, with various formatting options.
