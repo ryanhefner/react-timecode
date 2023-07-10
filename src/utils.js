@@ -102,13 +102,6 @@ export const formatTimecode = ({ format, time }) => {
     case 'mm:ss':
       return `${pad(minutes + (hours * 60))}:${pad(seconds)}`;
 
-    case 'H:?mm:ss':
-      if (hours) {
-        return `${hours}:${pad(minutes)}:${pad(seconds)}`;
-      }
-
-      return `${pad(minutes)}:${pad(seconds)}`;
-
     case 'H:?m:ss':
     default:
       if (hours) {
