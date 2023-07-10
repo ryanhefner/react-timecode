@@ -2,6 +2,12 @@ const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
 
+/**
+ * parseTime
+ *
+ * @param {Number} time
+ * @returns {{ hours: Number, minutes: Number, seconds: Number, milliseconds: Number }}}
+ */
 export const parseTime = (time) => {
   let milliseconds = time
 
@@ -32,6 +38,13 @@ export const parseTime = (time) => {
   return { hours, minutes, seconds, milliseconds };
 }
 
+/**
+ * pad
+ *
+ * @param {Number} number
+ * @param {Number} length
+ * @returns {String}
+ */
 export const pad = (number, length = 2) => {
   const numberLength = number.toString().length
 
@@ -49,10 +62,25 @@ export const pad = (number, length = 2) => {
   return `${number}`
 }
 
+/**
+ * formatMilliseconds
+ *
+ * @param {Number} milliseconds
+ * @param {Number} length
+ * @returns {String}
+ */
 export const formatMilliseconds = (milliseconds, length = 3) => {
   return pad((milliseconds / 1000).toFixed(length) * 1000, length);
 }
 
+/**
+ * formatTimecode
+ *
+ * @param {Object} options
+ * @param {String} options.format
+ * @param {Number} options.time
+ * @returns {String}
+ */
 export const formatTimecode = ({ format, time }) => {
   const { hours, minutes, seconds, milliseconds } = parseTime(time)
 
