@@ -2,13 +2,28 @@
   "name": "react-timecode",
   "version": "1.2.0",
   "license": "MIT",
-  "description": "Simple React component for displaying a timecode, with various format options.",
+  "description": "Simple React component for displaying a timecode with various format options.",
   "repository": "ryanhefner/react-timecode",
   "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/ryanhefner"
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ryanhefner/react-marquease/issues"
   },
+  "homepage": "https://github.com/ryanhefner/react-marquease#readme",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/ryanhefner"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ryanhefner"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/ryanhefner"
+    }
+  ],
   "keywords": [
     "react",
     "react-component",
@@ -17,76 +32,75 @@
     "react-timer-wrapper"
   ],
   "files": [
-    "index.js",
     "es",
     "src",
-    "umd"
+    "types",
+    "umd",
+    "index.cjs"
   ],
   "directories": {
     "lib": "/src"
   },
-  "main": "index.js",
+  "main": "index.cjs",
   "module": "es/index.js",
   "jsnext:main": "src/index.js",
+  "types": "types",
   "scripts": {
-    "clean": "rm -f index.js && rm -rf es && rm -rf umd",
-    "prebuild": "npm run clean",
-    "build": "node ./tools/build.js",
-    "watch": "babel ./src -d . --ignore __tests__,**/*.test.js --watch",
-    "prepare": "npm run build",
-    "prepublishOnly": "node ./tools/build.js",
+    "clean": "rimraf index.cjs es umd",
+    "prebuild": "yarn clean",
+    "build": "node ./tools/build.mjs",
+    "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",
+    "prepare": "yarn build",
+    "prepublishOnly": "node ./tools/build.mjs",
+    "prettier": "prettier -c",
     "push-release": "git push origin master && git push --tags",
-    "test": "jest"
+    "dtslint": "dtslint types",
+    "test": "jest",
+    "test:ci": "jest --coverage",
+    "types": "tsc"
   },
   "peerDependencies": {
-    "react": ">=15"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "dependencies": {
-    "clean-react-props": "^0.4.0",
-    "prop-types": "^15.7.2"
+    "clean-react-props": "^0.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
+    "@babel/eslint-parser": "^7.22.7",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-syntax-import-assertions": "^7.22.5",
+    "@babel/plugin-transform-runtime": "^7.22.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.2",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^29.6.1",
     "babel-plugin-dev-expression": "^0.2.2",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
     "coveralls": "^3.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "greenkeeper-lockfile": "^1.15.1",
-    "gzip-size": "^5.1.1",
-    "jest": "^26.0.1",
-    "jest-enzyme": "^7.1.2",
-    "jsdom": "^16.2.2",
-    "pretty-bytes": "^5.3.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
+    "gzip-size": "^7.0.0",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
+    "prettier": "^3.0.0",
+    "pretty-bytes": "^6.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "regenerator-runtime": "^0.13.5",
-    "rollup": "^2.10.5",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.test.js"
-    ],
-    "setupFiles": [
-      "<rootDir>/tools/jest-setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js"
-    ],
-    "testURL": "http://localhost"
+    "rimraf": "^5.0.1",
+    "rollup": "^3.26.2",
+    "typescript": "^5.1.6"
   }
 }

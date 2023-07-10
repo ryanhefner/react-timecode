@@ -1,40 +1,60 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
-import resolve from 'rollup-plugin-node-resolve';
-import { uglify } from 'rollup-plugin-uglify';
-import pkg from './package.json';
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+import resolve from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
+import pkg from './package.json' assert { type: 'json' }
 
-const config = {
+const cjsConfig = {
   input: 'src/index.js',
   output: {
-    name: 'react-timecode',
-    format: 'umd',
-    file: './index.js',
+    exports: 'named',
+    name: pkg.name,
+    file: './index.cjs',
+    format: 'cjs',
     globals: {
-      'react': 'React',
+      react: 'React',
     },
-    banner: `/*! ${pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} Ryan Hefner | ${pkg.license} License | https://github.com/${pkg.repository} !*/`,
-    footer: '/* follow me on Twitter! @ryanhefner */',
+    banner: `/*! ${pkg.name} !*/`,
+    footer: `/* Copyright 2018 - ${(new Date()).getFullYear()} - ${pkg.author} */`,
   },
+}
+
+const umdConfig = {
+  input: 'src/index.js',
+  output: {
+    exports: 'named',
+    name: pkg.name,
+    file: './index.cjs',
+    format: 'umd',
+    globals: {
+      react: 'React',
+    },
+    banner: `/*! ${pkg.name} !*/`,
+    footer: `/* Copyright 2018 - ${(new Date()).getFullYear()} - ${pkg.author} */`,
+  },
+}
+
+const config = {
+  ...(process.env.BABEL_ENV === 'cjs' ? cjsConfig : umdConfig),
   external: [
     'react',
   ],
   plugins: [
+    json(),
     babel({
       exclude: 'node_modules/**',
-      externalHelpers: process.env.BABEL_ENV === 'umd',
+      babelHelpers: 'runtime',
     }),
     resolve(),
     commonjs({
       include: /node_modules/,
     }),
-    json(),
   ],
-};
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(uglify());
 }
 
-export default config;
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(terser())
+}
+
+export default config

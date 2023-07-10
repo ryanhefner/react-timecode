@@ -1,6 +1,9 @@
+.circleci
+.github
 coverage
 tools
 src/.babelrc
+src/__snapshots__
 **/*.test.js
 rollup.config.js
 *.sublime-project
