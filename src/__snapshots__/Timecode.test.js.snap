@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Timecode /> render markup - default component 1`] = `
+<div>
+  <span>
+    0:00
+  </span>
+</div>
+`;
