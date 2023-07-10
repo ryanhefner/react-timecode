@@ -1,12 +1,12 @@
-export function parseTime(time: any): {
+export function parseTime(time: number): {
     hours: number;
     minutes: number;
     seconds: number;
-    milliseconds: any;
+    milliseconds: number;
 };
-export function pad(number: any, length?: number): string;
-export function formatMilliseconds(milliseconds: any, length?: number): string;
+export function pad(number: number, length?: number): string;
+export function formatMilliseconds(milliseconds: number, length?: number): string;
 export function formatTimecode({ format, time }: {
-    format: any;
-    time: any;
+    format: string;
+    time: number;
 }): string;
