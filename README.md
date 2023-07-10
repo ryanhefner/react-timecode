@@ -34,6 +34,7 @@ simple example.
 ### Properties
 
 * `as:String|Function` - Element to render the timecode within. (Default: `span`)
+* `[DEPRECATED]` `component:String|Function` - Element to render the timecode within. (Default: `span`)
 * `format:String` - Specifies the format to display the timecode. (Default: `H:?m:ss`)
   * `HH:mm:ss.SSS` - (Example: 00:01:23.876)
   * `H:mm:ss.SSS` - (Example: 0:01:23.876)
