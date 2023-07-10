@@ -1,21 +1,22 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
-import resolve from 'rollup-plugin-node-resolve';
-import { uglify } from 'rollup-plugin-uglify';
-import pkg from './package.json';
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+import resolve from '@rollup/plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
+import pkg from './package.json' assert { type: 'json' }
 
 const config = {
   input: 'src/index.js',
   output: {
-    name: 'react-timecode',
+    exports: 'named',
+    name: pkg.name,
+    file: './index.cjs',
     format: 'umd',
-    file: './index.js',
     globals: {
-      'react': 'React',
+      react: 'React',
     },
-    banner: `/*! ${pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} Ryan Hefner | ${pkg.license} License | https://github.com/${pkg.repository} !*/`,
-    footer: '/* follow me on Twitter! @ryanhefner */',
+    banner: `/*! ${pkg.name} !*/`,
+    footer: `/* Copyright ${(new Date()).getFullYear()} - ${pkg.author} */`,
   },
   external: [
     'react',
@@ -23,7 +24,7 @@ const config = {
   plugins: [
     babel({
       exclude: 'node_modules/**',
-      externalHelpers: process.env.BABEL_ENV === 'umd',
+      babelHelpers: 'runtime',
     }),
     resolve(),
     commonjs({
@@ -31,10 +32,10 @@ const config = {
     }),
     json(),
   ],
-};
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(uglify());
 }
 
-export default config;
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(terser())
+}
+
+export default config
