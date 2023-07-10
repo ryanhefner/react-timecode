@@ -33,7 +33,7 @@ simple example.
 
 ### Properties
 
-* `component:String|Function` - Element to render the timecode within. (Default: `span`)
+* `as:String|Function` - Element to render the timecode within. (Default: `span`)
 * `format:String` - Specifies the format to display the timecode. (Default: `H:?m:ss`)
   * `HH:mm:ss.SSS` - (Example: 00:01:23.876)
   * `H:mm:ss.SSS` - (Example: 0:01:23.876)
@@ -72,6 +72,17 @@ import Timecode from 'react-timecode';
 ...
 
 ```
+
+### Utilities
+
+In addition to the `Timecode` component, the underlying utility methods that the
+component uses for rendering the timecodes have also been exposed, in case you
+have some need to render some strings without the context of the component.
+
+* `parseTime(time:Number): { hours: Number, minutes: Number, seconds: Number, milliseconds: Number }`
+* `pad(number: Number, length: Number = 2): String`
+* `formatMilliseconds(milliseconds: Number, length: Number = 3)`
+* `formatTimecode({ format: String, time: Number }): String`
 
 ## Pairs well with...
 
