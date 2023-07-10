@@ -5,7 +5,7 @@
 ![npm](https://img.shields.io/npm/dt/react-timecode?style=flat-square)
 ![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-timecode?style=flat-square)
 ![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-timecode?style=flat-square)
-[![Known Vulnerabilities](https://snyk.io/test/github/ryanhefner/react-timecode/badge.svg)]
+![Known Vulnerabilities](https://snyk.io/test/github/ryanhefner/react-timecode/badge.svg)
 ![Twitter Follow](https://img.shields.io/twitter/follow/ryanhefner)
 
 
