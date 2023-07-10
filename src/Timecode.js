@@ -7,6 +7,7 @@ import { formatTimecode } from './utils'
  *
  * @param {Object} props
  * @param {String} [props.as='span'] - HTML element to render
+ * @param {String} [props.component] - HTML element to render [DEPRECATED
  * @param {String} [props.format='H:?m:ss'] - Timecode format
  * @param {String} [props.postfix=''] - Postfix to append to timecode
  * @param {String} [props.prefix=''] - Prefix to prepend to timecode
@@ -15,10 +16,10 @@ import { formatTimecode } from './utils'
  * @param {React.Ref} [ref] - React ref
  * @returns {React.ReactElement}
  */
-export const Timecode = forwardRef(({ as: asProp = 'span', format = 'H:?m:ss', postfix = '', prefix = '', time = 0, ...rest }, ref) => {
+export const Timecode = forwardRef(({ as: asProp = 'span', component, format = 'H:?m:ss', postfix = '', prefix = '', time = 0, ...rest }, ref) => {
   const timecode = useMemo(() => formatTimecode({ format, time }), [format, time])
 
-  const Component = asProp
+  const Component = component || asProp
 
   return (
     <Component {...cleanReactProps(rest)} ref={ref}>
